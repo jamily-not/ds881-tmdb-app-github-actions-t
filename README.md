@@ -121,9 +121,9 @@ A nuvem moderna não roda apenas em processadores Intel/AMD (x86); muitos servid
 Siga as regras operacionais abaixo para a organização do grupo:
 
 ### 1. Repositório Compartilhado e Proteção de Branch
-✅* **Formação:** Formem grupos de 3 a 4 integrantes.
-✅* **Hospedagem:** Apenas um integrante fará o Fork do repositório base para a sua conta e adicionará os demais membros do grupo como colaboradores (com permissão de escrita).
-✅* **Branch Protection:** O dono do repositório deve acessar as configurações (*Settings > Branches > Add branch protection rule*). Crie uma regra para a branch `release` marcando a opção **"Require a pull request before merging"**. 
+* **✅Formação:** Formem grupos de 3 a 4 integrantes.
+* **✅Hospedagem:** Apenas um integrante fará o Fork do repositório base para a sua conta e adicionará os demais membros do grupo como colaboradores (com permissão de escrita).
+* **✅Branch Protection:** O dono do repositório deve acessar as configurações (*Settings > Branches > Add branch protection rule*). Crie uma regra para a branch `release` marcando a opção **"Require a pull request before merging"**. 
 
 ### 2. Gestão de Tarefas e Rastreabilidade
 ✅* Ativem a aba **Projects** no repositório e criem um board no estilo Kanban com as colunas: *To Do, In Progress, Review, Done*.
