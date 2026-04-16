@@ -126,7 +126,7 @@ Siga as regras operacionais abaixo para a organização do grupo:
 * **✅Branch Protection:** O dono do repositório deve acessar as configurações (*Settings > Branches > Add branch protection rule*). Crie uma regra para a branch `release` marcando a opção **"Require a pull request before merging"**. 
 
 ### 2. Gestão de Tarefas e Rastreabilidade
-✅* Ativem a aba **Projects** no repositório e criem um board no estilo Kanban com as colunas: *To Do, In Progress, Review, Done*.
+* ✅ Ativem a aba **Projects** no repositório e criem um board no estilo Kanban com as colunas: *To Do, In Progress, Review, Done*.
 * Cada etapa principal desta atividade (Etapa 1, Etapa 2, Etapa 3, etc.) deve ser transformada em uma **Issue**.
 * Quando iniciarem uma etapa, o responsável deve associar o seu usuário à Issue correspondente e movê-la pelo board conforme o progresso.
 
