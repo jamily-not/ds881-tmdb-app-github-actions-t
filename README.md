@@ -6,9 +6,9 @@ Este repositório contém uma aplicação React Native (Expo) que consome a API 
 
 Antes de iniciar as etapas, você deve garantir que a aplicação tenha acesso aos dados:
 
-1.  **Fork:** Certifique-se de estar trabalhando no seu próprio Fork para ter permissão de execução das Actions.
-2.  **TMDB API Key:** Registre-se em [themoviedb.org](https://www.themoviedb.org/), crie um perfil de desenvolvedor e obtenha sua **API Key (v3 auth)**.
-3.  **GitHub Secrets:** No seu repositório (após o Fork), vá em *Settings > Secrets and variables > Actions* e crie um segredo chamado `TMDB_API_KEY` com o valor da sua chave.
+1.  ✅**Fork:** Certifique-se de estar trabalhando no seu próprio Fork para ter permissão de execução das Actions.
+2.  ✅**TMDB API Key:** Registre-se em [themoviedb.org](https://www.themoviedb.org/), crie um perfil de desenvolvedor e obtenha sua **API Key (v3 auth)**.
+3.  ✅**GitHub Secrets:** No seu repositório (após o Fork), vá em *Settings > Secrets and variables > Actions* e crie um segredo chamado `TMDB_API_KEY` com o valor da sua chave.
 
 
 ## Etapa 1: Garantia de Qualidade (Testes)
@@ -121,12 +121,12 @@ A nuvem moderna não roda apenas em processadores Intel/AMD (x86); muitos servid
 Siga as regras operacionais abaixo para a organização do grupo:
 
 ### 1. Repositório Compartilhado e Proteção de Branch
-* **Formação:** Formem grupos de 3 a 4 integrantes.
-* **Hospedagem:** Apenas um integrante fará o Fork do repositório base para a sua conta e adicionará os demais membros do grupo como colaboradores (com permissão de escrita).
-* **Branch Protection:** O dono do repositório deve acessar as configurações (*Settings > Branches > Add branch protection rule*). Crie uma regra para a branch `release` marcando a opção **"Require a pull request before merging"**. 
+✅* **Formação:** Formem grupos de 3 a 4 integrantes.
+✅* **Hospedagem:** Apenas um integrante fará o Fork do repositório base para a sua conta e adicionará os demais membros do grupo como colaboradores (com permissão de escrita).
+✅* **Branch Protection:** O dono do repositório deve acessar as configurações (*Settings > Branches > Add branch protection rule*). Crie uma regra para a branch `release` marcando a opção **"Require a pull request before merging"**. 
 
 ### 2. Gestão de Tarefas e Rastreabilidade
-* Ativem a aba **Projects** no repositório e criem um board no estilo Kanban com as colunas: *To Do, In Progress, Review, Done*.
+✅* Ativem a aba **Projects** no repositório e criem um board no estilo Kanban com as colunas: *To Do, In Progress, Review, Done*.
 * Cada etapa principal desta atividade (Etapa 1, Etapa 2, Etapa 3, etc.) deve ser transformada em uma **Issue**.
 * Quando iniciarem uma etapa, o responsável deve associar o seu usuário à Issue correspondente e movê-la pelo board conforme o progresso.
 
