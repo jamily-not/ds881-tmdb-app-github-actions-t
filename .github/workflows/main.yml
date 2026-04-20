@@ -7,21 +7,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  runs-on: ubuntu-latest
 
-  steps: 
-    - name: Carregar código do repositório
-      uses: actions/checkout@v4
-    
-    - name: Configurar ambiente Node
-      uses: actions/setup-node@v4
-      with:
-        node_version: '20'
-        cache: 'npm'
+  install-and-test:
 
-    - name: Instalar dependências
-      uses: npm ci
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: Carregar código do repositório
+        uses: actions/checkout@v4
+      
+      - name: Configurar ambiente Node
+        uses: actions/setup-node@v4
+        with:
+          node_version: '20'
+          cache: 'npm'
+
+      - name: Instalar dependências
+        uses: npm ci
+      
+      - name: Executar Testes
+        uses: npm test
     
-    - name: Executar Testes
-      uses: npm test
-  

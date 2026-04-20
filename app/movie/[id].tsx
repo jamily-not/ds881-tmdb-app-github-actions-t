@@ -38,7 +38,7 @@ export default function MovieDetailsScreen() {
         // Limita o elenco aos 20 primeiros atores para economizar memória do dispositivo
         setCast(creditsResponse.data.cast.slice(0, 20));
       } catch (error) {
-        console.error('Erro ao buscar detalhes:', error);
+        console.error('Erro ao buscar detalhes do autor:', error);
       } finally {
         setIsLoading(false);
       }
