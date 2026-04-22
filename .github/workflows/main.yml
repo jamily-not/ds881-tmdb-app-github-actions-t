@@ -19,12 +19,12 @@ jobs:
       - name: Configurar ambiente Node
         uses: actions/setup-node@v4
         with:
-          node_version: '20'
+          node-version: '20'
           cache: 'npm'
 
       - name: Instalar dependências
-        uses: npm ci
+        run: npm ci
       
       - name: Executar Testes
-        uses: npm test
+        run: npm test
     
