@@ -11,7 +11,7 @@ Antes de iniciar as etapas, você deve garantir que a aplicação tenha acesso a
 3.  ✅**GitHub Secrets:** No seu repositório (após o Fork), vá em *Settings > Secrets and variables > Actions* e crie um segredo chamado `TMDB_API_KEY` com o valor da sua chave.
 
 
-## Etapa 1: Garantia de Qualidade (Testes) - Pedro
+## Etapa 1: Garantia de Qualidade (Testes) - Peter
 
 O primeiro passo de qualquer pipeline é garantir que o código novo não quebre funcionalidades existentes.
 
