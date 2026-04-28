@@ -11,27 +11,27 @@ Antes de iniciar as etapas, você deve garantir que a aplicação tenha acesso a
 3.  ✅**GitHub Secrets:** No seu repositório (após o Fork), vá em *Settings > Secrets and variables > Actions* e crie um segredo chamado `TMDB_API_KEY` com o valor da sua chave.
 
 
-## Etapa 1: Garantia de Qualidade (Testes)
+## Etapa 1: Garantia de Qualidade (Testes) - Peter
 
 O primeiro passo de qualquer pipeline é garantir que o código novo não quebre funcionalidades existentes.
 
-* Crie o arquivo `.github/workflows/main.yml` no seu repositório.
-* Configure o gatilho para disparar apenas em `pushes` na branch `release` ou manualmente via `workflow_dispatch`.
-* Crie um Job de teste que utilize o **Node.js 20** (para compatibilidade com os métodos do Expo).
-* O job deve instalar as dependências usando `npm ci` (para garantir uma instalação fiel ao lockfile) e executar o script de teste padrão.
+* ✅Crie o arquivo `.github/workflows/main.yml` no seu repositório.
+* ✅Configure o gatilho para disparar apenas em `pushes` na branch `release` ou manualmente via `workflow_dispatch`.
+* ✅Crie um Job de teste que utilize o **Node.js 20** (para compatibilidade com os métodos do Expo).
+* ✅O job deve instalar as dependências usando `npm ci` (para garantir uma instalação fiel ao lockfile) e executar o script de teste padrão.
 
 
-## Etapa 2: Entrega Web e GitHub Pages
+## Etapa 2: Entrega Web e GitHub Pages - Jamily
 
 Nesta etapa, você deve transformar o código em um site estático e publicá-lo. 
 **Atenção aos detalhes importantes abaixo.**
 
-1.  **Configuração da BaseURL:** Antes de mexer no workflow, edite o arquivo `app.json` no seu projeto. Adicione a propriedade `experiments.baseUrl` apontando para o nome do seu repositório (ex: `/seu-repositorio`). Sem isso, os scripts JS não serão encontrados no deploy.
-2.  **Variáveis de Ambiente:** No workflow, garanta que a chave do TMDB seja injetada em um arquivo `.env`. Lembre-se que o Expo exige que variáveis de frontend comecem com o prefixo `EXPO_PUBLIC_`.
-3.  **Build e Bypass do Jekyll:**
+1.  ✅**Configuração da BaseURL:** Antes de mexer no workflow, edite o arquivo `app.json` no seu projeto. Adicione a propriedade `experiments.baseUrl` apontando para o nome do seu repositório (ex: `/seu-repositorio`). Sem isso, os scripts JS não serão encontrados no deploy.
+2.  ✅**Variáveis de Ambiente:** No workflow, garanta que a chave do TMDB seja injetada em um arquivo `.env`. Lembre-se que o Expo exige que variáveis de frontend comecem com o prefixo `EXPO_PUBLIC_`.
+3.  ✅**Build e Bypass do Jekyll:**
     * Execute o comando de exportação do Expo para a plataforma web.
     * **Importante:** O GitHub Pages ignora pastas que começam com sublinhado (como a `_expo` gerada pelo build). Crie um arquivo vazio chamado `.nojekyll` na pasta de saída (`dist`) para desativar esse comportamento.
-4.  **Deploy:** Utilize as Actions oficiais do GitHub para fazer o upload do artefato da pasta `dist` e realizar o deploy para o ambiente `github-pages`.
+4.  ✅**Deploy:** Utilize as Actions oficiais do GitHub para fazer o upload do artefato da pasta `dist` e realizar o deploy para o ambiente `github-pages`.
 
 
 ## Etapa 3: Build Nativo e Release de APK
@@ -127,8 +127,8 @@ Siga as regras operacionais abaixo para a organização do grupo:
 
 ### 2. Gestão de Tarefas e Rastreabilidade
 * ✅ Ativem a aba **Projects** no repositório e criem um board no estilo Kanban com as colunas: *To Do, In Progress, Review, Done*.
-* Cada etapa principal desta atividade (Etapa 1, Etapa 2, Etapa 3, etc.) deve ser transformada em uma **Issue**.
-* Quando iniciarem uma etapa, o responsável deve associar o seu usuário à Issue correspondente e movê-la pelo board conforme o progresso.
+* ✅Cada etapa principal desta atividade (Etapa 1, Etapa 2, Etapa 3, etc.) deve ser transformada em uma **Issue**.
+* ✅Quando iniciarem uma etapa, o responsável deve associar o seu usuário à Issue correspondente e movê-la pelo board conforme o progresso.
 
 ### 3. Rotação de Papéis e Revisão de Código
 Para que todos pratiquem as diferentes responsabilidades do ciclo de vida de desenvolvimento, os papéis do time devem **obrigatoriamente rotacionar** a cada nova etapa da atividade.
