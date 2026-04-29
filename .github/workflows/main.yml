@@ -1,30 +1,65 @@
-name: Garantia de Qualidade
+name: Garantia de Qualidade e Deploy
 
-on: 
+on:
   push:
     branches:
       - release
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-
   install-and-test:
-
     runs-on: ubuntu-latest
 
-    steps: 
+    steps:
       - name: Carregar código do repositório
         uses: actions/checkout@v4
-      
+
       - name: Configurar ambiente Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
       - name: Instalar dependências
         run: npm ci
-      
+
       - name: Executar Testes
         run: npm test
-    
+
+  deploy:
+    needs: install-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout #precisamos repetir novamente pois é um novo servico
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Criar arquivo .env #aqui começa a etapa 2 de verdade
+        run: echo "EXPO_PUBLIC_TMDB_KEY=${{ secrets.EXPO_PUBLIC_TMDB_KEY }}" > .env
+
+      - name: Build web (Expo) 
+        run: npx expo export --platform web
+
+      - name: Criar .nojekyll
+        run: touch dist/.nojekyll
+
+      - name: Upload do site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      - name: Deploy
+        uses: actions/deploy-pages@v4
