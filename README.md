@@ -34,14 +34,14 @@ Nesta etapa, você deve transformar o código em um site estático e publicá-lo
 4.  ✅**Deploy:** Utilize as Actions oficiais do GitHub para fazer o upload do artefato da pasta `dist` e realizar o deploy para o ambiente `github-pages`.
 
 
-## Etapa 3: Build Nativo e Release de APK
+## Etapa 3: Build Nativo e Release de APK - Clarissa 
 
 A última etapa consiste em gerar o binário para instalação em dispositivos Android sem depender de serviços externos pagos.
 
-1.  **Ambiente Nativo:** O job deve configurar o **JDK 17** e o ambiente Node.js.
-2.  **Geração de Código Nativo:** Como este é um projeto gerenciado (Managed Workflow), você deve executar o comando `prebuild` do Expo para gerar a pasta `/android` dinamicamente no Runner do GitHub.
-3.  **Compilação Gradle:** Garanta permissão de execução para o arquivo `gradlew` e execute o comando para montar o APK de release (`assembleRelease`).
-4.  **Publicação da Release:**
+1.  ✅**Ambiente Nativo:** O job deve configurar o **JDK 17** e o ambiente Node.js.
+2.  ✅**Geração de Código Nativo:** Como este é um projeto gerenciado (Managed Workflow), você deve executar o comando `prebuild` do Expo para gerar a pasta `/android` dinamicamente no Runner do GitHub.
+3.  ✅**Compilação Gradle:** Garanta permissão de execução para o arquivo `gradlew` e execute o comando para montar o APK de release (`assembleRelease`).
+4.  ✅**Publicação da Release:**
     * Faça o upload do arquivo `.apk` gerado como um artefato do workflow.
     * Configure um passo final que dependa dos builds anteriores para criar uma **GitHub Release** oficial.
     * Utilize o número da execução (`github.run_number`) para taguear a versão automaticamente (ex: `v1`, `v2`).

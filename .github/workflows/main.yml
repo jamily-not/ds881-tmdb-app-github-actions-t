@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -63,3 +63,69 @@ jobs:
 
       - name: Deploy
         uses: actions/deploy-pages@v4
+
+  # Etapa 3: gera o Android nativo no runner e monta o APK de release.
+  build-android:
+    needs: install-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Criar arquivo .env
+        run: echo "EXPO_PUBLIC_TMDB_KEY=${{ secrets.EXPO_PUBLIC_TMDB_KEY }}" > .env
+
+      - name: Gerar código nativo Android (Expo prebuild)
+        run: npx expo prebuild --platform android --non-interactive
+
+      - name: Permitir execução do gradlew
+        run: chmod +x android/gradlew
+
+      - name: Compilar APK de release
+        run: cd android && ./gradlew assembleRelease
+
+      - name: Upload do APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: android/app/build/outputs/apk/release/app-release.apk
+          if-no-files-found: error
+
+  create-release:
+    needs:
+      - deploy
+      - build-android
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar artefato do APK
+        uses: actions/download-artifact@v4
+        with:
+          name: app-release-apk
+          path: artifacts
+
+      - name: Criar GitHub Release e anexar APK
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+          name: v${{ github.run_number }}
+          files: artifacts/app-release.apk
